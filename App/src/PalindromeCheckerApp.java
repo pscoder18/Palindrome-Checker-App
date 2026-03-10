@@ -11,24 +11,11 @@ public class PalindromeCheckerApp {
         System.out.print("Enter a word to check if it's a palindrome: ");
         String input = scanner.nextLine();
 
-        // Create a LinkedList to store characters
-        LinkedList<Character> list = new LinkedList<>();
-
-        // Add each character to the linked list
-        for (char c : input.toCharArray()) {
-            list.addLast(c); // Or list.add(c), both append to the end
-        }
-
-        // Flag to track palindrome state
+        // Handle edge case for empty strings, otherwise start recursion
         boolean isPalindrome = true;
-
-        // Compare until only one or zero elements remain
-        while (list.size() > 1) {
-            // Remove and compare elements from both ends
-            if (list.removeFirst() != list.removeLast()) {
-                isPalindrome = false;
-                break; // Exit early if a mismatch is found
-            }
+        if (input != null && !input.isEmpty()) {
+            // Start checking from the first index (0) and the last index (length - 1)
+            isPalindrome = check(input, 0, input.length() - 1);
         }
 
         // Display the results matching the required output format
@@ -37,5 +24,21 @@ public class PalindromeCheckerApp {
 
         // Close the scanner
         scanner.close();
+    }
+
+    private static boolean check(String s, int start, int end) {
+
+        // Base Condition 1: If pointers cross or meet, all pairs matched perfectly!
+        if (start >= end) {
+            return true;
+        }
+
+        // Base Condition 2: If the current outer characters don't match, it's not a palindrome
+        if (s.charAt(start) != s.charAt(end)) {
+            return false;
+        }
+
+        // Recursive Call: Shrink the problem by moving both pointers inward and calling the method again
+        return check(s, start + 1, end - 1);
     }
 }
