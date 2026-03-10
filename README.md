@@ -1,9 +1,9 @@
-### Use Case 7 (UC7): Deque Based Optimized Palindrome Checker
-* **Goal:** Validate a palindrome using a Deque (Double-Ended Queue) for an efficient front-to-back comparison.
-* **Key Concepts:** * **Deque Data Structure:** A double-ended queue that allows elements to be added or removed from *both* the front and the back.
-    * **Bidirectional Traversal:** Using `removeFirst()` and `removeLast()` to simultaneously pull and compare characters from opposite ends of the word.
-    * **Optimization:** This approach provides the symmetric comparison benefits of combining a Queue and Stack (like in UC6), but does so using only a single, highly efficient data structure.
-* **Data Structure:** `Deque` (implemented using `ArrayDeque`)
+### Use Case 8 (UC8): Linked List Based Palindrome Checker
+* **Goal:** Validate a palindrome by leveraging the double-ended operations of a LinkedList.
+* **Key Concepts:** * **LinkedList:** In Java, this is implemented as a doubly linked list, meaning each element holds a reference to both the previous and next elements.
+    * **Double-ended Operations:** Utilizing `removeFirst()` and `removeLast()` to pull elements from the front and back of the list simultaneously.
+    * **Symmetric Validation:** Comparing elements from both ends inward until the list has one or zero elements remaining, proving the string reads the same forwards and backwards.
+* **Data Structure:** `LinkedList`
 
 
 
@@ -17,4 +17,3 @@ To run the different use cases, open your terminal, navigate to the project dire
 ```bash
 javac UseCase2PalindromeCheckerApp.java
 java UseCase2PalindromeCheckerApp
-
