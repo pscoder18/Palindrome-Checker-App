@@ -1,34 +1,44 @@
 import java.util.Scanner;
-
-
 public class PalindromeCheckerApp {
 
-    /**
-     * Application entry point for UC3.
-     * * @param args Command-line arguments
-     */
     public static void main(String[] args) {
-        // Create a Scanner to get user input
+
+        // Create a Scanner object to read input from the console
         Scanner scanner = new Scanner(System.in);
+
+        // Prompt the user to enter a word
         System.out.print("Enter a word to check if it's a palindrome: ");
         String input = scanner.nextLine();
 
-        // Initialize an empty string to hold our reversed version
-        String reversed = "";
+        // Convert the string into a character array.
+        char[] chars = input.toCharArray();
 
-        // Iterate from the last character to the first.
-        for (int i = input.length() - 1; i >= 0; i--) {
-            // Build the reversed string character by character
-            reversed += input.charAt(i);
+        // Initialize pointer at the beginning.
+        int start = 0;
+
+        // Initialize pointer at the end.
+        int end = chars.length - 1;
+
+        // Assume palindrome initially.
+        boolean isPalindrome = true;
+
+        // Continue comparison until pointers cross.
+        while (start < end) {
+            // If characters at the pointers don't match, it's not a palindrome
+            if (chars[start] != chars[end]) {
+                isPalindrome = false;
+                break; // Exit the loop early for efficiency
+            }
+            // Move the pointers towards the center
+            start++;
+            end--;
         }
 
-        // Compare the actual content of the two String objects using equals()
-        if (input.equals(reversed)) {
-            System.out.println("The string \"" + input + "\" is a palindrome.");
-        } else {
-            System.out.println("The string \"" + input + "\" is not a palindrome.");
-        }
+        // Display the results matching the required output format
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
 
+        // Close the scanner
         scanner.close();
     }
 }
