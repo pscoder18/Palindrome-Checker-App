@@ -1,11 +1,11 @@
-### Use Case 8 (UC8): Linked List Based Palindrome Checker
-* **Goal:** Validate a palindrome by leveraging the double-ended operations of a LinkedList.
-* **Key Concepts:** * **LinkedList:** In Java, this is implemented as a doubly linked list, meaning each element holds a reference to both the previous and next elements.
-    * **Double-ended Operations:** Utilizing `removeFirst()` and `removeLast()` to pull elements from the front and back of the list simultaneously.
-    * **Symmetric Validation:** Comparing elements from both ends inward until the list has one or zero elements remaining, proving the string reads the same forwards and backwards.
-* **Data Structure:** `LinkedList`
+### Use Case 9 (UC9): Recursive Palindrome Checker
+* **Goal:** Validate a palindrome using recursive method calls instead of traditional loops.
+* **Key Concepts:** * **Recursion:** A programming technique where a method calls itself to solve smaller instances of the same problem.
+    * **Base Condition:** The stopping criteria required to prevent infinite loops (which cause a `StackOverflowError`). In this case, recursion stops when a mismatch is found or when the pointers cross (`start >= end`).
+    * **Divide-and-Conquer:** Breaking the problem down by comparing the outermost characters and recursively calling the method on the remaining inner substring.
+* **Approach:** Recursive Method Logic
 
-
+[Image of recursion call stack for palindrome checking]
 
 ---
 
