@@ -1,34 +1,31 @@
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.Scanner; // 1. Import the Scanner class
-
-
+import java.util.LinkedList;
+import java.util.Scanner;
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // 2. Create a Scanner object to read input from the console
+        // Create a Scanner object to read input from the console
         Scanner scanner = new Scanner(System.in);
 
-        // 3. Prompt the user to enter a word
+        // Prompt the user to enter a word
         System.out.print("Enter a word to check if it's a palindrome: ");
         String input = scanner.nextLine();
 
-        // Create a Deque to store characters
-        Deque<Character> deque = new ArrayDeque<>();
+        // Create a LinkedList to store characters
+        LinkedList<Character> list = new LinkedList<>();
 
-        // Add each character to the deque
+        // Add each character to the linked list
         for (char c : input.toCharArray()) {
-            deque.addLast(c);
+            list.addLast(c); // Or list.add(c), both append to the end
         }
 
-        // Flag to track palindrome result
+        // Flag to track palindrome state
         boolean isPalindrome = true;
 
-        // Continue comparison while more than one element exists
-        while (deque.size() > 1) {
-            // Remove and compare elements from both ends simultaneously
-            if (deque.removeFirst() != deque.removeLast()) {
+        // Compare until only one or zero elements remain
+        while (list.size() > 1) {
+            // Remove and compare elements from both ends
+            if (list.removeFirst() != list.removeLast()) {
                 isPalindrome = false;
                 break; // Exit early if a mismatch is found
             }
@@ -38,7 +35,7 @@ public class PalindromeCheckerApp {
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
 
-        // 4. Close the scanner
+        // Close the scanner
         scanner.close();
     }
 }
