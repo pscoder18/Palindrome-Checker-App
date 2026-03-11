@@ -1,24 +1,22 @@
-# Use Case 12: Strategy Pattern for Palindrome Algorithms
+# Use Case 13: Performance Comparison
 
 ## Description
-This Java application demonstrates the **Strategy Design Pattern** by allowing different palindrome validation algorithms to be selected dynamically at runtime.
+This Java application introduces benchmarking concepts by measuring the execution performance of a palindrome validation algorithm.
 
-Instead of hardcoding a single validation method, the application defines a common `PalindromeStrategy` interface. This allows for excellent extensibility—new algorithms can be added simply by creating new classes that implement this interface, without altering the core application logic.
-
-
-
-Currently, the application includes a `StackStrategy` which utilizes a Last-In-First-Out (LIFO) data structure to reverse and validate the string.
+To achieve high-precision time tracking, the application utilizes Java's `System.nanoTime()` method. This allows developers to capture the exact start and end times of the algorithm's execution down to the nanosecond, providing a clear metric for evaluating algorithmic efficiency and performance.
 
 ## Features
-* **Strategy Design Pattern**: Decouples the algorithmic logic from the main application, promoting the Open/Closed Principle (open for extension, closed for modification).
-* **Interface-Driven Design**: Uses a `PalindromeStrategy` interface as a contract for all validation algorithms.
-* **Stack-Based Validation**: The `StackStrategy` pushes characters onto a `java.util.Stack` and pops them off to seamlessly compare the string against its reversed self.
+* **Micro-Benchmarking**: Measures the precise execution duration of a specific block of code.
+* **High-Resolution Timing**: Uses `System.nanoTime()` instead of `System.currentTimeMillis()` to capture ultra-precise performance metrics (1 millisecond = 1,000,000 nanoseconds).
+* **Efficient Execution**: Implements a fast two-pointer algorithm to serve as the baseline strategy being measured.
 
 ## Example
 **Input:**
-`racecar`
+`level`
 
-**Output:**
+**Expected Output:**
+*(Note: The exact execution time will vary depending on the hardware and background processes running at the time of execution).*
 ```text
-Input : racecar
+Input : level
 Is Palindrome? : true
+Execution Time : 852600 ns
