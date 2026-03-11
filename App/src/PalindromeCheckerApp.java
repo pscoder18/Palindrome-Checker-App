@@ -1,40 +1,44 @@
 public class PalindromeCheckerApp {
 
+    /**
+     * Application entry point for UC13.
+     *
+     * @param args Command-line arguments
+     */
     public static void main(String[] args) {
-        String input = "racecar";
+        // 1. Define the input string
+        String input = "level";
 
-        // Inject the strategy at runtime
-        PalindromeStrategy strategy = new StackStrategy();
+        // 2. Capture execution start time in nanoseconds
+        long startTime = System.nanoTime();
 
-        // Execute the selected algorithm
-        boolean isPalindrome = strategy.check(input);
+        // 3. Execute the palindrome check (Using a fast two-pointer approach here)
+        boolean isPalindrome = checkPalindrome(input);
 
-        // Output results
+        // 4. Capture execution end time
+        long endTime = System.nanoTime();
+
+        // 5. Calculate total execution duration
+        long executionTime = endTime - startTime;
+
+        // 6. Display benchmarking results matching the required output format
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
+        System.out.println("Execution Time : " + executionTime + " ns");
     }
-}
-interface PalindromeStrategy {
-    boolean check(String input);
-}
 
 
-class StackStrategy implements PalindromeStrategy {
+    private static boolean checkPalindrome(String str) {
+        int left = 0;
+        int right = str.length() - 1;
 
-    @Override
-    public boolean check(String input) {
-        java.util.Stack<Character> stack = new java.util.Stack<>();
-
-        for (char c : input.toCharArray()) {
-            stack.push(c);
-        }
-
-        for (char c : input.toCharArray()) {
-            if (c != stack.pop()) {
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
                 return false;
             }
+            left++;
+            right--;
         }
-
         return true;
     }
 }
