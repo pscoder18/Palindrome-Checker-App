@@ -1,31 +1,20 @@
-# Use Case 10: Normalized Palindrome Validation
+# Use Case 11: Object-Oriented Palindrome Service
 
 ## Description
-This is a lightweight Java application that validates whether a given string is a palindrome. It implements a normalization step prior to validation, ensuring that the palindrome check is based on the logical sequence of letters and numbers rather than being dependent on formatting, spaces, or punctuation.
+This Java application demonstrates how to validate a palindrome using Object-Oriented Programming (OOP) principles. Instead of placing all the logic inside the `main` method, the palindrome-checking algorithm is encapsulated within a dedicated `PalindromeService` class.
+
+This architectural choice improves the code's reusability, readability, and separation of concerns, making it easier to maintain and scale.
 
 ## Features
-* **Input Normalization**: Strips all spaces and special symbols from the input string using Regular Expressions (`[^a-zA-Z0-9]`).
-* **Case-Insensitivity**: Converts all characters to lowercase to ensure `A` matches `a`.
-* **Efficient Processing**: The validation loop compares characters from the outside in and exits immediately if a mismatch is found, saving processing time on longer strings.
+* **Object-Oriented Design**: Utilizes a service class (`PalindromeService`) to handle the core business logic.
+* **Two-Pointer Algorithm**: Employs a highly efficient `while` loop with two pointers (start and end) that move inward, comparing characters until they meet in the middle.
+* **Separation of Concerns**: The main application class is only responsible for managing the input/output and instantiating the service, keeping the code clean.
 
 ## Example
-If the input is:
-`"A man a plan a canal Panama"`
+**Input:**
+`racecar`
 
-The application evaluates the normalized version:
-`"amanaplanacanalpanama"`
-
-And returns a successful validation.
-
-## Prerequisites
-* Java Development Kit (JDK) 8 or higher installed on your machine.
-
-## How to Run
-
-1. **Save the file**: Ensure the Java code is saved in a file named `UseCase10PalindromeCheckerApp.java`.
-2. **Open your terminal or command prompt**.
-3. **Navigate to the directory** where the file is saved.
-4. **Compile the Java file**:
-   ```bash
-   javac UseCase10PalindromeCheckerApp.java
-   
+**Output:**
+```text
+Input : racecar
+Is Palindrome? : true
