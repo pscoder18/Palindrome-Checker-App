@@ -1,14 +1,18 @@
-# Use Case 11: Object-Oriented Palindrome Service
+# Use Case 12: Strategy Pattern for Palindrome Algorithms
 
 ## Description
-This Java application demonstrates how to validate a palindrome using Object-Oriented Programming (OOP) principles. Instead of placing all the logic inside the `main` method, the palindrome-checking algorithm is encapsulated within a dedicated `PalindromeService` class.
+This Java application demonstrates the **Strategy Design Pattern** by allowing different palindrome validation algorithms to be selected dynamically at runtime.
 
-This architectural choice improves the code's reusability, readability, and separation of concerns, making it easier to maintain and scale.
+Instead of hardcoding a single validation method, the application defines a common `PalindromeStrategy` interface. This allows for excellent extensibility—new algorithms can be added simply by creating new classes that implement this interface, without altering the core application logic.
+
+
+
+Currently, the application includes a `StackStrategy` which utilizes a Last-In-First-Out (LIFO) data structure to reverse and validate the string.
 
 ## Features
-* **Object-Oriented Design**: Utilizes a service class (`PalindromeService`) to handle the core business logic.
-* **Two-Pointer Algorithm**: Employs a highly efficient `while` loop with two pointers (start and end) that move inward, comparing characters until they meet in the middle.
-* **Separation of Concerns**: The main application class is only responsible for managing the input/output and instantiating the service, keeping the code clean.
+* **Strategy Design Pattern**: Decouples the algorithmic logic from the main application, promoting the Open/Closed Principle (open for extension, closed for modification).
+* **Interface-Driven Design**: Uses a `PalindromeStrategy` interface as a contract for all validation algorithms.
+* **Stack-Based Validation**: The `StackStrategy` pushes characters onto a `java.util.Stack` and pops them off to seamlessly compare the string against its reversed self.
 
 ## Example
 **Input:**

@@ -1,55 +1,40 @@
 public class PalindromeCheckerApp {
 
-    /**
-     * Application entry point for UC11.
-     *
-     * @param args Command-line arguments
-     */
     public static void main(String[] args) {
-        // 1. Define the input string
         String input = "racecar";
 
-        // 2. Instantiate the service class
-        PalindromeService service = new PalindromeService();
+        // Inject the strategy at runtime
+        PalindromeStrategy strategy = new StackStrategy();
 
-        // 3. Call the method and store the result
-        boolean isPalindrome = service.checkPalindrome(input);
+        // Execute the selected algorithm
+        boolean isPalindrome = strategy.check(input);
 
-        // 4. Print the output matching the requirement
+        // Output results
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
+interface PalindromeStrategy {
+    boolean check(String input);
+}
 
-/**
- * Service class that contains palindrome logic.
- */
-class PalindromeService {
 
-    /**
-     * Checks whether the input string is a palindrome.
-     *
-     * @param input Input string
-     * @return true if palindrome, false otherwise
-     */
-    public boolean checkPalindrome(String input) {
+class StackStrategy implements PalindromeStrategy {
 
-        // Initialize pointers
-        int start = 0;
-        int end = input.length() - 1;
+    @Override
+    public boolean check(String input) {
+        java.util.Stack<Character> stack = new java.util.Stack<>();
 
-        // Compare characters moving inward
-        while (start < end) {
-            // If the characters at the pointers don't match, it's not a palindrome
-            if (input.charAt(start) != input.charAt(end)) {
-                return false;
-            }
-            // Move pointers inward for the next iteration
-            start++;
-            end--;
+        for (char c : input.toCharArray()) {
+            stack.push(c);
         }
 
-        // If the loop finishes without returning false, it is a palindrome
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
+                return false;
+            }
+        }
+
         return true;
     }
 }
